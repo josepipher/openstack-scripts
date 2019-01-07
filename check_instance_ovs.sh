@@ -2,6 +2,7 @@
 #-----------------------------------------
 # usage : ./check_instance_ovs.sh 'instance id'
 # use id from running command : nova list
+# Modified by : sanjose
 #-----------------------------------------
 source ~/openrc
 
@@ -26,6 +27,6 @@ done
 echo
 echo "VLAN information from ofctl :"
 echo "-----------------------------"
-ovs-ofctl dump-flows br-int | grep vlan | cut -d ',' -f10
+ovs-ofctl dump-flows br-int | grep vlan | cut -d ',' -f9
 echo
 
