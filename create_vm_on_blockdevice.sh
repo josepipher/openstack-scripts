@@ -70,7 +70,7 @@ create_volume()
   echo "image ID : $image_id"
   randsize=$(python -c "import random; print random.randrange(1,50)*10")
   volname=vol`date +%Y%m%d%H%M%S`$c
-  vol_id=$(openstack volume create --image $image_id --size $randsize --bootable --description "created by script" $volname | grep -w id | awk '{print $4}')
+  vol_id=$(openstack volume create --availability-zone $az_name --image $image_id --size $randsize --bootable --description "created by script" $volname | grep -w id | awk '{print $4}')
   echo $vol_id >> volume_created_`date +%Y%m%d`.txt
   echo "created :" $volname "of size(GB) :" $randsize "id:" $vol_id
 }
