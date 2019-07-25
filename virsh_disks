@@ -1,2 +1,2 @@
 #!/bin/bash
-for i in $(virsh list --all | sed 1,2d |awk '{print $2}'); do printf $i,; printf $(virsh dumpxml $i | grep nova:name), ; j=$(virsh dumpxml $i | grep '/dev/disk/' | cut -d "'" -f2); printf "\n"; for k in $j; do if [ -e "$k" ]; then printf $k, ; ls -l "$k" | awk '{print $11}'; fi; done; done
+for i in $(virsh list --all | sed 1,2d |awk '{print $2}'); do echo -n "$(virsh domstate $i),"; printf $i,; printf $(virsh dumpxml $i | grep nova:name), ; j=$(virsh dumpxml $i | grep '/dev/disk/' | cut -d "'" -f2); printf "\n"; for k in $j; do if [ -e "$k" ]; then printf $k, ; ls -l "$k" | awk '{print $11}'; fi; done; done
