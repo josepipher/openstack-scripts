@@ -33,7 +33,7 @@ Openstack monitor""" % vmName )
 def main():
   import sys; sys.path.append('your-working-directory')
   import datetime
-  from connect_vio_vds import authen, create_vm
+  from connect_openstack import authen, create_vm
 
   try:
     conn = authen('your-openstack-project-id')
